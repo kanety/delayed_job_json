@@ -27,7 +27,36 @@ Generate migration files:
 
     $ rails generate delayed_job_json:migration
 
-Run migration:
+Edit generated files and leave codes only for your database. An example of generated file is shown as follows:
+
+```ruby
+class AddPayloadToDelayedJobs < ActiveRecord::Migration[7.0]
+  def up
+    case ENV['DATABASE']
+    when 'postgresql'
+      add_column :delayed_jobs, :payload, :jsonb, null: false, default: {}
+      add_index :delayed_jobs, :payload, using: :gin
+    when 'mysql'
+      add_column :delayed_jobs, :payload, :json
+    else
+      add_column :delayed_jobs, :payload, :json, null: false, default: {}
+    end
+  end
+
+  def down
+    case ENV['DATABASE']
+    when 'postgresql'
+      remove_column :delayed_jobs, :payload, :jsonb, null: false, default: {}
+    when 'mysql'
+      remove_column :delayed_jobs, :payload, :json
+    else
+      remove_column :delayed_jobs, :payload, :json, null: false, default: {}
+    end
+  end
+end
+```
+
+Then run migration:
 
     $ rake db:migrate
 
