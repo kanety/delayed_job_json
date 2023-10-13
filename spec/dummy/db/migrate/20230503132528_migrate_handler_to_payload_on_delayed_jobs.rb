@@ -1,4 +1,4 @@
-class MigrateHandlerToPayloadOnDelayedJobs < ActiveRecord::Migration[6.0]
+class MigrateHandlerToPayloadOnDelayedJobs < ActiveRecord::Migration::Current
   class DelayedJob < ActiveRecord::Base
   end
 

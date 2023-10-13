@@ -1,4 +1,4 @@
-class AddDummyDataToDelayedJobs < ActiveRecord::Migration[6.0]
+class AddDummyDataToDelayedJobs < ActiveRecord::Migration::Current
   class DelayedJob < ActiveRecord::Base
   end
 

@@ -1,4 +1,4 @@
-class AddPayloadToDelayedJobs < ActiveRecord::Migration[6.0]
+class AddPayloadToDelayedJobs < ActiveRecord::Migration::Current
   def up
     case ENV['DATABASE']
     when 'postgresql'
