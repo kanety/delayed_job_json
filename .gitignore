@@ -5,6 +5,7 @@
 /pkg/
 /spec/reports/
 /spec/**/db/*.sqlite3*
+/spec/**/db/schema.rb
 /spec/**/log/*.log
 /spec/**/tmp/*
 /tmp/
